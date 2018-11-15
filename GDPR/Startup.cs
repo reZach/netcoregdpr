@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GDPR.MaxMind;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -31,7 +32,9 @@ namespace GDPR
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
+            // Added this line below!
+            services.AddSingleton<IMaxMindService, MaxMindService>();
+            services.AddScoped<GDPRFilter>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

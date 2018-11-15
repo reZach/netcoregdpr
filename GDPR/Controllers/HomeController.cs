@@ -5,9 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using GDPR.Models;
+using GDPR.MaxMind;
 
 namespace GDPR.Controllers
 {
+    [ServiceFilter(typeof(GDPRFilter))]
     public class HomeController : Controller
     {
         public IActionResult Index()
